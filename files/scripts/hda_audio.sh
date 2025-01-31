@@ -73,6 +73,3 @@ cp $hda_dir/snd-hda-codec-cirrus.ko $update_dir # 'make install' did not work
 
 echo " * updating kernel dependencies for $kernel_release"
 depmod -a $kernel_release # need to explicitly state the kernel release
-
-echo " * cleaning up"
-rm -rf /tmp/*
