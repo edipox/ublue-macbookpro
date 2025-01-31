@@ -17,13 +17,17 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    scripts:
+      - hda_audio.sh
+
   - type: rpm-ostree
     repos:
-    - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms
+      - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms
 #    - https://copr.fedorainfracloud.org/coprs/mulderje/facetimehd-kmod/repo/fedora-%OS_VERSION%/mulderje-facetimehd-kmod-fedora-%OS_VERSION%.repo
     install:
 #    - mbpfan
-    - facetimehd
+      - facetimehd
 
 #  - type: akmods
 #    install:
