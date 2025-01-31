@@ -1,4 +1,4 @@
-name: Macbook Pro 2017 A1708 - Fedora Atomic Build
+name: Bluebuild
 on:
 #  schedule:
 #    - cron:
