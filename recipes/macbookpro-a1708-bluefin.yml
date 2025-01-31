@@ -13,25 +13,7 @@ modules:
     install:
       - mbpfan
       - facetimehd
-
   - type: script
     scripts:
       - hda_audio.sh
-
-#  - type: akmods
-#    install:
-#    - facetimehd-kmod # available as an akmod
-
-#  - type: rpm-ostree
-#    repos:
-#      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-#    install:
-#      - micro
-#      - starship
-#    remove:
-#      # example: removing firefox (in favor of the flatpak)
-#      # "firefox" is the main package, "firefox-langpacks" is a dependency
-#      - firefox
-#      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
