@@ -17,16 +17,17 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-#  - type: rpm-ostree
-#    repos:
+  - type: rpm-ostree
+    repos:
+    - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms
 #    - https://copr.fedorainfracloud.org/coprs/mulderje/facetimehd-kmod/repo/fedora-%OS_VERSION%/mulderje-facetimehd-kmod-fedora-%OS_VERSION%.repo
-#    install:
-#    - tiny-dfr
-#    - mbpfan
-
-  - type: akmods
     install:
-    - facetimehd # available as an akmod
+    - mbpfan
+    - facetimehd-kmod
+
+#  - type: akmods
+#    install:
+#    - facetimehd-kmod # available as an akmod
 
 #  - type: rpm-ostree
 #    repos:
