@@ -66,7 +66,6 @@ update_dir="/lib/modules/$kernel_release/updates"
 
 export KERNELRELEASE=$kernel_release # this is needed for 'make'
 echo " * compiling kernel module"
-tree -d /lib/modules/$kernel_release
 make
 
 echo " * copying kernel module into $update_dir"
