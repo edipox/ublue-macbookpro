@@ -1,8 +1,8 @@
-# Bluebuild: Bluefin for Macbook Pro 13, 2017, model A1708 💻
+# Bluebuild: Bluefin for Macbook Pro 13,1 💻
 
 # Purpose
 
-Personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with hardware modifications to support an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1.
+Personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with hardware modifications to support an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708)
 
 # How did this happen?
 
