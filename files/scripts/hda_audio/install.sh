@@ -8,8 +8,8 @@ kernel_release=$(rpm -qa kernel | cut -d '-' -f2-) # cut from the second field b
 echo "Using kernel release: $kernel_release ..."
 
 # make a directory as the install script fails without this in place
-echo "Creating directory /lib/modules/$kernel_release/updates/dkms ..."
-mkdir -p /lib/modules/$kernel_release/updates/dkms
+echo "Creating directory /lib/modules/$kernel_release/updates ..."
+mkdir -p /lib/modules/$kernel_release/updates
 
 echo "Cloning and moving to the git repository ..."
 git clone https://github.com/davidjo/snd_hda_macbookpro /tmp/snd_hda_macbookpro
