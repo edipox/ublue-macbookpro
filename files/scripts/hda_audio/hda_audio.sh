@@ -70,11 +70,12 @@ update_dir="/lib/modules/$kernel_release/updates"
 
 export KERNELRELEASE=$kernel_release # this is needed for 'make'
 echo " * compiling kernel module"
+cat Makefile
 make
 make install
 
-echo " * copying kernel module into $update_dir"
-cp $hda_dir/snd-hda-codec-cirrus.ko $update_dir # 'make install' did not work
+#echo " * copying kernel module into $update_dir"
+#cp $hda_dir/snd-hda-codec-cirrus.ko $update_dir # 'make install' did not work
 
-echo " * updating kernel dependencies for $kernel_release"
-depmod -a $kernel_release # need to explicitly state the kernel release
+#echo " * updating kernel dependencies for $kernel_release"
+#depmod -a $kernel_release # need to explicitly state the kernel release
