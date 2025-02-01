@@ -17,4 +17,5 @@ modules:
   - type: script
     scripts:
       - hda_audio/hda_audio.sh
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: initramfs
+  - type: signing
