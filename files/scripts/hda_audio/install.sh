@@ -7,8 +7,12 @@ set -oue pipefail
 kernel_release=$(rpm -qa kernel | cut -d '-' -f2-) # cut from the second field by '-' onwards => 6.11.8-300.fc41.x86_64
 echo "Using kernel release: $kernel_release ..."
 
+# make a directory as the install script fails without this in place
+echo "Creating directory /lib/modules/$kernel_release/updates/dkms ..."
+mkdir -p /lib/modules/$kernel_release/updates/dkms
+
 echo "Cloning and moving to the git repository ..."
-git clone --progress https://github.com/davidjo/snd_hda_macbookpro /tmp/snd_hda_macbookpro
+git clone https://github.com/davidjo/snd_hda_macbookpro /tmp/snd_hda_macbookpro
 cd /tmp/snd_hda_macbookpro
 
 # edit the Makefile to explicity state the kernel release
