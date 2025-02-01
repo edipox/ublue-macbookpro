@@ -12,8 +12,9 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-%OS_VERSION%/mulderje-intel-mac-rpms-fedora-%OS_VERSION%.repo
     install:
       - mbpfan
-      - facetimehd
+      - akmods # used by the webcam install script
   - type: script
     scripts:
-      - snd_hda_macbookpro.sh
+      - sound.sh
+      - webcam.sh
   - type: signing
