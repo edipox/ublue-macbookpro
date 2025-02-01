@@ -52,6 +52,7 @@ echo " * copy patched files"
 cp $patch_dir/Makefile $patch_dir/patch_cirrus.c $patch_dir/patch_cirrus_a1534_setup.h $patch_dir/patch_cirrus_a1534_pcm.h $hda_dir/
 
 echo " * altering Makefile"
+sed -i 's/ifndef KERNELRELEASE//' $hda_dir/Makefile
 sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/' $hda_dir/Makefile
 
 # if kernel version is >= 6.12 then change
