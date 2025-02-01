@@ -65,7 +65,7 @@ cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluebuild
 - from within an existing rpm-ostree installation (i.e. Bluefin)
 - load a terminal, rebase to this image, then reboot:
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/bluebuild-macbookpro-a1708:latest
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-13-1-bluefin
 ```
 - any issues, this can then be rolled back:
 ```
