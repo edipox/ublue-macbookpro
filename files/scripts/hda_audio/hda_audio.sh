@@ -51,10 +51,6 @@ mv $hda_dir/patch_cirrus.c $hda_dir/patch_cirrus.c.orig
 echo " * copy patched files"
 cp $patch_dir/Makefile $patch_dir/patch_cirrus.c $patch_dir/patch_cirrus_a1534_setup.h $patch_dir/patch_cirrus_a1534_pcm.h $hda_dir/
 
-echo " * altering Makefile"
-sed -i 's/ifndef KERNELRELEASE//' $hda_dir/Makefile
-sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/' $hda_dir/Makefile
-
 # if kernel version is >= 6.12 then change
 # snd_pci_quirk to hda_quirk
 # SND_PCI_QUIRK to HDA_CODEC_QUIRK
@@ -70,8 +66,15 @@ update_dir="/lib/modules/$kernel_release/updates"
 
 export KERNELRELEASE=$kernel_release # this is needed for 'make'
 echo " * compiling kernel module"
-cat Makefile
 make
+
+echo " * altering Makefile"
+echo " - old Makefile:"
+cat Makefile
+sed -i 's/ifndef KERNELRELEASE//g' $hda_dir/Makefile
+sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' $hda_dir/Makefile
+echo " - current Makefile:"
+cat Makefile
 make install
 
 #echo " * copying kernel module into $update_dir"
