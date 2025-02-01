@@ -5,7 +5,7 @@
 set -oeux pipefail
 
 echo "Downloading build-kmod-facetimehd.sh script ..."
-curl -LsSf -o /tmp/build-kmod-facetimehd.sh 
+curl -LsSf -o /tmp/build-kmod-facetimehd.sh \
     "https://raw.githubusercontent.com/ublue-os/akmods/refs/heads/main/build_files/extra/build-kmod-facetimehd.sh"
 
 echo "Marking as executable ..."
