@@ -11,6 +11,7 @@ modules:
     repos:
       - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-%OS_VERSION%/mulderje-intel-mac-rpms-fedora-%OS_VERSION%.repo
     install:
+      - akmods
       - mbpfan
       - facetimehd
   - type: script
