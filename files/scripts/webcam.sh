@@ -12,7 +12,7 @@ echo "Marking as executable ..."
 chmod +x /tmp/build-kmod-facetimehd.sh
 
 echo "Calling the install script ..."
-/bin/sh -c /tmp/build-knod-facetimehd.sh
+/bin/sh -c /tmp/build-kmod-facetimehd.sh
 
 echo "Cleaning up ..."
 rm /tmp/build-kmod-facetimehd.sh
