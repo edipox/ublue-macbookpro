@@ -1,4 +1,4 @@
-name: macbookpro13,1-bluefin
+name: macbookpro-13-1-bluefin
 description: Second attempt at custom image for MacBook Pro 13,1
 base-image: ghcr.io/ublue-os/bluefin
 image-version: stable-daily # latest is also supported if you want new updates ASAP
