@@ -1,9 +1,5 @@
-ifdef KERNELRELEASE
-	KERNELDIR := /lib/modules/$(KERNELRELEASE)
-else
-	KERNELDIR := /lib/modules/$(shell uname -r)
-endif
-
+KERNELRELEASE := $(shell rpm -qa kernel | cut -d '-' -f2-)
+KERNELDIR= := /lib/modules/$(KERNELRELEASE)
 KERNELBUILD := $(KERNELDIR)/build
 
 all:
@@ -12,8 +8,7 @@ all:
 clean:
 	make -C $(KERNELBUILD) M=$(shell pwd)/build/hda clean
 
-ifndef KERNELRELEASE
 install:
-	cp $(shell pwd)/build/hda/snd-hda-codec-cirrus.ko $(KERNELDIR)/updates
-	depmod -a $(KERNELRELEASE)
-endif
+	make INSTALL_MOD_DIR=updates -C $(KERNELBUILD) M=$(shell pwd)/build/hda CONFIG_MODULE_SIG_ALL=n modules_install
+#	cp $(shell pwd)/build/hda/snd-hda-codec-cirrus.ko $(KERNELDIR)/updates
+#	depmod -a $(KERNELRELEASE)
