@@ -15,16 +15,16 @@ echo "Using kernel release: $kernel_release ..."
 echo "Creating directory /lib/modules/$kernel_release/updates ..."
 mkdir -p /lib/modules/$kernel_release/updates
 
-echo "Cloning and moving to the git repository ..."
+echo "Cloning the git repository ..."
 git clone https://github.com/davidjo/snd_hda_macbookpro /tmp/snd_hda_macbookpro
-cd /tmp/snd_hda_macbookpro
 
 # edit the Makefile to explicity state the kernel release
 # otherwise this uses the 'uname -r' environment which will fail
 echo "Edit the Makefile to add $kernel_release ..."
-sed -i "s/depmod -a/depmod -a $kernel_release/" Makefile
+sed -i "s/depmod -a/depmod -a $kernel_release/" /tmp/snd_hda_macbookpro/Makefile
 
 echo "Calling the install script ..."
+cd /tmp/snd_hda_macbookpro
 ./install.cirrus.driver.sh -k $kernel_release
 
 echo "Cleaning up ..."
