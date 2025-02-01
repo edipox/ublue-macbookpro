@@ -25,7 +25,10 @@ tree -d /etc/yum.repos.d/_copr_mulderje-intel-mac-rpms.repo
 
 ### BUILD facetimehd (succeed or fail-fast with debug output)
 dnf install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
-akmods --force --kernels "${KERNEL}" --kmod facetimehd
+#akmods --force --kernels "${KERNEL}" --kmod facetimehd
+
+akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
+
 modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
 || (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
 
