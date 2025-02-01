@@ -16,5 +16,5 @@ modules:
   - type: script
     scripts:
       - sound.sh
-      - webcam.sh
+#      - webcam.sh
   - type: signing
