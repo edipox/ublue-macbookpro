@@ -20,7 +20,7 @@ echo "Edit the Makefile to add $kernel_release ..."
 sed -i "s/depmod -a/depmod -a $kernel_release/" Makefile
 
 echo "Calling the install script ..."
-./install.cirrus.driver.sh -i -k $kernel_release
+./install.cirrus.driver.sh -k $kernel_release
 
 echo "Cleaning up ..."
 rm -rf /tmp/snd_hda_macbookpro
