@@ -65,7 +65,7 @@ update_dir="/lib/modules/$kernel_release/updates"
 [[ ! -d $update_dir ]] && mkdir $update_dir
 
 # this is needed to pass in the $kernel_release to make install
-cat > Makefile<< EOF
+cat <<EOF > Makefile
 KERNELRELEASE := $kernel_release
 KERNELDIR= := /lib/modules/$(KERNELRELEASE)
 KERNELBUILD := $(KERNELDIR)/build
@@ -78,6 +78,8 @@ install:
 #	cp $(shell pwd)/build/hda/snd-hda-codec-cirrus.ko $(KERNELDIR)/updates
 #	depmod -a $(KERNELRELEASE)
 EOF
+cat Makefile
+
 #echo " * altering Makefile" # changed to cat<<EOF above
 #sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile # change the if *n* def -> ifdef
 #sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile # pass in variable
