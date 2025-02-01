@@ -14,16 +14,19 @@ else
     COPR_RELEASE="${RELEASE}"
 fi
 
-echo "Downloading repo ..."
 curl -LsSf -o /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo \
     "https://copr.fedorainfracloud.org/coprs/mulderje/facetimehd-kmod/repo/fedora-${COPR_RELEASE}/mulderje-facetimehd-kmod-fedora-${COPR_RELEASE}.repo"
 
 ### BUILD facetimehd (succeed or fail-fast with debug output)
-echo "Attempting DNF ==> dnf install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH} ..."
 dnf install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 
-echo "Attempting akmods ==> akmods --force --kernels "${KERNEL}" --kmod facetimehd ..."
+echo "Fixing /tmp permissions for akmodsbuild"
+chmod a=rwx,u+t /tmp
+
+echo " =====> Attempting akmods --force --kernels "${KERNEL}" --kmod facetimehd ..."
 akmods --force --kernels "${KERNEL}" --kmod facetimehd
+cat /var/cache/akmods/facetimehd/*.failed.log
+
 
 echo "Attempting modinfo ==> modinfo /usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz ..."
 modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
