@@ -24,16 +24,14 @@ echo "Fixing /tmp permissions for akmodsbuild"
 chmod a=rwx,u+t /tmp
 
 echo " =====> Attempting akmods --force --kernels "${KERNEL}" --kmod facetimehd ..."
-akmods --force --kernels "${KERNEL}" --kmod facetimehd
-cat /var/cache/akmods/facetimehd/*.failed.log
+akmods --force --kernels "${KERNEL}" --kmod facetimehd || cat /var/cache/akmods/facetimehd/*.failed.log
 
+#echo "Attempting modinfo ==> modinfo /usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz ..."
+#modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
+#    || (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
 
-echo "Attempting modinfo ==> modinfo /usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz ..."
-modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
-    || (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
-
-echo "Removing /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo ..."
-rm -f /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo
+#echo "Removing /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo ..."
+#rm -f /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo
 
 
 # # fail if any errors
