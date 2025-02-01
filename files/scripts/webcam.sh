@@ -2,7 +2,7 @@
 # Script to install facetimehd akmod
 # https://raw.githubusercontent.com/ublue-os/akmods/refs/heads/main/build_files/extra/build-kmod-facetimehd.sh
 
-set -oeux pipefail
+#set -oeux pipefail
 
 ARCH="$(rpm -E '%_arch')"
 KERNEL="$(rpm -q "${KERNEL_NAME:-kernel}" --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
@@ -24,7 +24,10 @@ echo "Fixing /tmp permissions for akmodsbuild"
 chmod a=rwx,u+t /tmp
 
 echo " =====> Attempting akmods --force --kernels "${KERNEL}" --kmod facetimehd ..."
-akmods --force --kernels "${KERNEL}" --kmod facetimehd || cat /var/cache/akmods/facetimehd/*.failed.log
+akmods --force --kernels "${KERNEL}" --kmod facetimehd
+cat /var/cache/akmods/facetimehd/*.failed.log
+
+exit 1
 
 #echo "Attempting modinfo ==> modinfo /usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz ..."
 #modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
