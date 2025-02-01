@@ -16,6 +16,6 @@ modules:
       - facetimehd
   - type: script
     scripts:
-      - hda_audio/hda_audio.sh
-  - type: initramfs
+      - hda_audio/install.sh
+  #- type: initramfs
   - type: signing
