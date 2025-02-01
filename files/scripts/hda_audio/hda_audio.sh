@@ -64,14 +64,27 @@ fi
 update_dir="/lib/modules/$kernel_release/updates"
 [[ ! -d $update_dir ]] && mkdir $update_dir
 
-export KERNELRELEASE=$kernel_release # this is needed for 'make'
+# this is needed to pass in the $kernel_release to make install
+cat > Makefile<< EOF
+KERNELRELEASE := $(shell rpm -qa kernel | cut -d '-' -f2-)
+KERNELDIR= := /lib/modules/$(KERNELRELEASE)
+KERNELBUILD := $(KERNELDIR)/build
+all:
+	make -C $(KERNELBUILD) M=$(shell pwd)/build/hda modules
+clean:
+	make -C $(KERNELBUILD) M=$(shell pwd)/build/hda clean
+install:
+	make INSTALL_MOD_DIR=updates -C $(KERNELBUILD) M=$(shell pwd)/build/hda CONFIG_MODULE_SIG_ALL=n modules_install
+#	cp $(shell pwd)/build/hda/snd-hda-codec-cirrus.ko $(KERNELDIR)/updates
+#	depmod -a $(KERNELRELEASE)
+EOF
+#echo " * altering Makefile" # changed to cat<<EOF above
+#sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile # change the if *n* def -> ifdef
+#sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile # pass in variable
+
+#export KERNELRELEASE=$kernel_release # this is needed for 'make' # not anymore with the above
 echo " * compiling kernel module"
 make
-
-# this is needed to pass in the $kernel_release to make install
-echo " * altering Makefile"
-sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile # change the if *n* def -> ifdef
-sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile # pass in variable
 
 echo " * installing kernel module"
 make install
