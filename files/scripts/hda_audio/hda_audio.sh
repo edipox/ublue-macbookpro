@@ -68,17 +68,10 @@ export KERNELRELEASE=$kernel_release # this is needed for 'make'
 echo " * compiling kernel module"
 make
 
+# this is needed to pass in the $kernel_release to make install
 echo " * altering Makefile"
-echo " - old Makefile:"
-cat Makefile
-sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile
-sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile
-echo " - current Makefile:"
-cat Makefile
+sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile # change the if *n* def -> ifdef
+sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile # pass in variable
+
+echo " * installing kernel module"
 make install
-
-#echo " * copying kernel module into $update_dir"
-#cp $hda_dir/snd-hda-codec-cirrus.ko $update_dir # 'make install' did not work
-
-#echo " * updating kernel dependencies for $kernel_release"
-#depmod -a $kernel_release # need to explicitly state the kernel release
