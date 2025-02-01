@@ -55,18 +55,18 @@ cp $patch_dir/Makefile $patch_dir/patch_cirrus.c $patch_dir/patch_cirrus_a1534_s
 # snd_pci_quirk to hda_quirk
 # SND_PCI_QUIRK to HDA_CODEC_QUIRK
 # but leave alone SND_PCI_QUIRK_VENDOR
-if (( kernel_version > 6 || (kernel_version == 6 && kernel_major_revision >= 12) )); then
-   echo "   - changing some internals..."
-   sed -i 's/snd_pci_quirk/hda_quirk/' $hda_dir/patch_cirrus.c
-   sed -i 's/SND_PCI_QUIRK\b/HDA_CODEC_QUIRK/' $hda_dir/patch_cirrus.c
-fi
+#if (( kernel_version > 6 || (kernel_version == 6 && kernel_major_revision >= 12) )); then
+#   echo "   - changing some internals..."
+#   sed -i 's/snd_pci_quirk/hda_quirk/' $hda_dir/patch_cirrus.c
+#   sed -i 's/SND_PCI_QUIRK\b/HDA_CODEC_QUIRK/' $hda_dir/patch_cirrus.c
+#fi
 
 update_dir="/lib/modules/$kernel_release/updates"
 [[ ! -d $update_dir ]] && mkdir $update_dir
 
 # this is needed to pass in the $kernel_release to make install
 cat > Makefile<< EOF
-KERNELRELEASE := $(shell rpm -qa kernel | cut -d '-' -f2-)
+KERNELRELEASE := $kernel_release
 KERNELDIR= := /lib/modules/$(KERNELRELEASE)
 KERNELBUILD := $(KERNELDIR)/build
 all:
