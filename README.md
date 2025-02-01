@@ -2,7 +2,7 @@
 
 # Purpose
 
-Personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with hardware modifications to support an old [Intel Macbook](https://support.apple.com/en-us/111951).
+Personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with hardware modifications to support an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1.
 
 # How did this happen?
 
