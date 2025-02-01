@@ -14,5 +14,7 @@ chmod +x /tmp/build-kmod-facetimehd.sh
 echo "Calling the install script ..."
 /bin/sh -c /tmp/build-kmod-facetimehd.sh
 
+cat /var/cache/akmods/facetimehd/0.6.8.1-1.20240319git0.6.8.1-for-6.12.9-200.fc41.x86_64.failed.log
+
 echo "Cleaning up ..."
 rm /tmp/build-kmod-facetimehd.sh
