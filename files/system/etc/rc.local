@@ -1,5 +1,6 @@
  #!/bin/sh -e
 
+# https://github.com/Dunedan/mbp-2016-linux?tab=readme-ov-file#suspend--hibernation
 echo 0 > /sys/bus/pci/devices/0000\:01\:00.0/d3cold_allowed
 
 exit 0
