@@ -8,11 +8,12 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
   - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-%OS_VERSION%/mulderje-intel-mac-rpms-fedora-%OS_VERSION%.repo
+#    repos:
+#      - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-%OS_VERSION%/mulderje-intel-mac-rpms-fedora-%OS_VERSION%.repo
     install:
       - mbpfan
       - akmods # used by the webcam install script
+#      - facetimehd-kmod
   - type: script
     scripts:
       - audio.sh
