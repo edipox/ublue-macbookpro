@@ -71,7 +71,7 @@ make
 echo " * altering Makefile"
 echo " - old Makefile:"
 cat Makefile
-sed -i 's/ifndef KERNELRELEASE//g' Makefile
+sed -i 's/ifndef KERNELRELEASE/ifdef KERNELRELEASE/g' Makefile
 sed -i 's/depmod -a/depmod -a $(KERNELRELEASE)/g' Makefile
 echo " - current Makefile:"
 cat Makefile
