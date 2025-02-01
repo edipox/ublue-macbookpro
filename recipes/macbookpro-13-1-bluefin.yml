@@ -15,6 +15,6 @@ modules:
       - akmods # used by the webcam install script
   - type: script
     scripts:
-      - sound.sh
-#      - webcam.sh
+      - audio.sh
+      - webcam.sh
   - type: signing
