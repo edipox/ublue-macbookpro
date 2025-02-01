@@ -25,7 +25,7 @@ jobs:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         recipe:
-          - macbookpro13,1-bluefin.yml
+          - macbookpro-13-1-bluefin.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Image Build
