@@ -11,12 +11,9 @@ modules:
     repos:
       - https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-%OS_VERSION%/mulderje-intel-mac-rpms-fedora-%OS_VERSION%.repo
     install:
-      - akmods
       - mbpfan
       - facetimehd
-      - dkms
   - type: script
     scripts:
-      - hda_audio/install.sh
-  #- type: initramfs
+      - snd_hda_macbookpro.sh
   - type: signing
