@@ -29,6 +29,7 @@ echo "DNF ======>"
 dnf install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 
 echo "AKMODS ======>"
+chmod a=rwx,u+t /tmp # fix /tmp permissions
 akmods --force --kernels "${KERNEL}" --kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
