@@ -31,9 +31,9 @@ Personal image for testing a custom build for [Bluefin](https://projectbluefin.i
 - This needs a kernel module patch compiled from source.
 - See the install script here: [audio.sh](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/audio.sh)
 - Complete nightmare for immutable distros, and probably a really bad idea to start with!
-- Issues: `uname -r` is reported as 'azure' within the process which is used within these repos
-- Fix: need to get the installed kernel with `rpm -qa kernel | cut -d '-' -f2-`
-- I then needed to edit the Makefile to explicitly pass the kernel version to `depmod`
+- Issues: `uname -r` is reported as 'azure' within the build process
+- Fix: need to get the installed kernel release with `rpm -qa kernel | cut -d '-' -f2-`
+- The Makefile then needed to be edited to explicitly pass the kernel version to `depmod`
 
 ## 🛜 WiFi
 
