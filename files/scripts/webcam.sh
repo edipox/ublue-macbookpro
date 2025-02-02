@@ -19,7 +19,7 @@ dnf5 install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 # fix the --gpgcheck error for akmods
 # see: https://universal-blue.discourse.group/t/need-help-building-system76-io-akmods/5725/3
 # this then throws an error "unexpected argument '--disablerepo' found"
-sed -i "s/dnf -y ${pkg_install:-install} --nogpgcheck --disablerepo='*'/dnf -y ${pkg_install:-install}/g"  /usr/sbin/akmods
+sed -i "s/--nogpgcheck --disablerepo='*'//g"  /usr/sbin/akmods
 akmods --force --kernels "${KERNEL}" --kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
