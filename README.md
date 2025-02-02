@@ -89,3 +89,4 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bluefin:lat
 6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/.github/workflows/build.yml))
 7. This loads the recipe (see recipes/[macbookpro-13-1-bluefin.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/recipes/macbookpro-13-1-bluefin.yml))
 8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/bluefin-macbookpro/tree/main/files/scripts) folder)
+9. On successful build this is pushed to the container registry (ghcr.io) where it can be pulled... 
