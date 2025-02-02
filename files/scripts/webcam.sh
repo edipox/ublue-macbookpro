@@ -28,6 +28,8 @@ mkdir -p /run/akmods
 
 akmods --force --kernels "${KERNEL}" #--kmod facetimehd
 
+cat /var/cache/akmods/facetimehd/0.6.8.1-1.20240319git0.6.8.1-for-6.12.9-200.fc41.x86_64.failed.log
+
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
 
 #modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
