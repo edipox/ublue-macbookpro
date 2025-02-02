@@ -14,6 +14,11 @@ modules:
       - mbpfan
       - akmods # used by the webcam install script
 #      - facetimehd-kmod
+  # overwritee akmods for debugging
+  - type: files
+    files:
+      - source: system/usr/sbin/akmods
+        destination: /usr/sbin/akmods
   - type: script
     scripts:
       - audio.sh
