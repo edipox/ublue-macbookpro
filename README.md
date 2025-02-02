@@ -4,7 +4,7 @@
 
 Personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with hardware modifications to support an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708)
 
-# How did this happen?
+# 🦖 How did this happen?
 
 1. This was initialised from [BlueBuild](https://blue-build.org/) [workshop](https://workshop.blue-build.org/)
 2. The cosign was automatically applied...
@@ -17,27 +17,35 @@ Personal image for testing a custom build for [Bluefin](https://projectbluefin.i
 
 # Modifications
 
+## 📸 Facetime Webcam
+
+- Working ✅
+- What a nightmare! Akmods aren't the easiest!
+- See the install script here: [webcam.sh](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/webcam.sh)
+- This needed a few fixes for the build to work (directory permissions, directories not existing, and build flags...)
+- The worst was patching `/usr/sbin/akmods` to remove the `--nogpgcheck --disablerepo` flags as these failed the build!
+
 ## 🔊 HDA Audio
 
+- Working ✅
 - This needs a kernel module patch compiled from source.
-- See the [hda_audio.sh script](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/hda_audio.sh)
-- Complete nightmare for immutable distros, and probably a really bad idea to start with.
-- Not sure what I was thinking...
-- Issues: `uname -r` is reported as 'azure' within the process.
+- See the install script here: [audio.sh](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/audio.sh)
+- Complete nightmare for immutable distros, and probably a really bad idea to start with!
+- Issues: `uname -r` is reported as 'azure' within the process which is used within these repos
 - Fix: need to get the installed kernel with `rpm -qa kernel | cut -d '-' -f2-`
-- From there used the process from [here](https://github.com/leifliddy/macbook12-audio-driver), which is itself modified from [here](https://github.com/davidjo/snd_hda_macbookpro).
-- May look at making this into an akmod, but needs to be tested first!
+- I then needed to edit the Makefile to explicitly pass the kernel version to `depmod`
 
-## WiFi
+## 🛜 WiFi
 
+- Working ✅
 - this was working OOB until fairly recently, but updates have since stopped it...
 - to re-enable this, in terminal type `ujust configure-broadcom-wl`
 - reboot, configure wifi in settings
 
 ## 🔋 Power / Sleep / Hibernate
 
-- Issues: this does not work
-- Fix: realistically, this needs to be disabled
+- Not Working ❌
+- Realistically, this needs to be disabled...
 - Will probably do something like [this](https://discussion.fedoraproject.org/t/f39-how-do-i-disable-suspend/128934/2).
 - Try to use [nosuspend.conf](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/system/etc/systemd/nosuspend.conf) which is added to the /etc folder
 
@@ -45,9 +53,7 @@ Personal image for testing a custom build for [Bluefin](https://projectbluefin.i
 
 ## ⚠️ Disclaimer!
 
-- Have not tested this! Use at own risk!
-- I've got this working (with facetimehd and the cirrus driver) on fedora workstation.
-- But have not yet tried to rebase this on my test HDD yet... :D
+- Minimal testing has been done, use at your own risk!
 - *Pull requests welcome!*
 
 ## 💻 Install Bluefin (or any other rpm-ostree image):
@@ -58,9 +64,9 @@ Personal image for testing a custom build for [Bluefin](https://projectbluefin.i
 
 ## 🔐 Verify the cosign key (optional but recommended):
 ```
-cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluebuild-macbookpro-a1708/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/bluefin-macbookpro-a1708:latest"
+cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluebuild-macbookpro-a1708/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-13-1-bluefin"
 ```
-## ♻️ Swap to this version:
+## ♻️ Rebase to this version:
 
 - from within an existing rpm-ostree installation (i.e. Bluefin)
 - load a terminal, rebase to this image, then reboot:
