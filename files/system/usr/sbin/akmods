@@ -332,7 +332,7 @@ buildinstall_kmod()
 
 	# build module using akmod
 	akmods_echo 1 4 "Building RPM using the command '/usr/sbin/akmodsbuild --kernels ${this_kernelver} ${this_kmodsrpm}'"
-	/sbin/runuser -s /bin/bash -c "/usr/sbin/akmodsbuild --verbose --kernels ${this_kernelver} --outputdir ${tmpdir}results --logfile ${tmpdir}/akmodsbuild.log ${this_kmodsrpm}" akmods >> "${kmodlogfile}" 2>&1
+	/sbin/runuser -s /bin/bash -c "/usr/sbin/akmodsbuild --quiet --kernels ${this_kernelver} --outputdir ${tmpdir}results --logfile ${tmpdir}/akmodsbuild.log ${this_kmodsrpm}" akmods >> "${kmodlogfile}" 2>&1
 	local returncode=$?
 
 	# copy rpmbuild log to kmod specific logfile
@@ -356,11 +356,11 @@ buildinstall_kmod()
 	akmods_echo 1 4 "Installing newly built rpms"
 	if [[ -f /usr/bin/dnf ]] ; then
 		akmods_echo 1 4 "DNF detected"
-		akmods_echo 1 4 "Using RPMs:"
-		tree "${tmpdir}results"
-		#echo $(find "${tmpdir}results" -type f -name '*.rpm')
-		akmods_echo 1 4 "End of RPM list"
-		dnf -y ${pkg_install:-install} --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
+		akmods_echo 1 4 "Using RPMs (ls): $(ls ${tmpdir}results)" # ADDED
+		akmods_echo 1 4 "Using RPMs (find): $(find ${tmpdir}results -type f -name '*.rpm' | grep -v debuginfo)" # ADDED
+
+		dnf -y ${pkg_install:-install} $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
+		#dnf -y ${pkg_install:-install} --nogpgcheck --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
 	else
 		akmods_echo 1 4 "DNF not found, using YUM instead."
 		yum -y ${pkg_install:-install} --nogpgcheck --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
