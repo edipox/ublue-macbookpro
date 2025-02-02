@@ -57,7 +57,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ## 🔐 Verify the cosign key (optional, but recommended):
 ```
-cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluebuild-macbookpro-a1708/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-13-1-bluefin"
+cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluefin-macbookpro/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-13-1-bluefin"
 ```
 ## ♻️ Rebase to this version:
 
