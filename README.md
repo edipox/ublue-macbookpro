@@ -1,4 +1,4 @@
-# Bluebuild: Bluefin for Macbook Pro 13,1 💻
+# Bluefin for Macbook Pro 13,1 💻
 
 # Purpose
 
