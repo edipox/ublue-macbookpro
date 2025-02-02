@@ -15,4 +15,5 @@ modules:
     scripts:
       - audio.sh
       - webcam.sh
+      - disable_sleep.sh
   - type: signing
