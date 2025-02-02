@@ -356,9 +356,6 @@ buildinstall_kmod()
 	akmods_echo 1 4 "Installing newly built rpms"
 	if [[ -f /usr/bin/dnf ]] ; then
 		akmods_echo 1 4 "DNF detected"
-		akmods_echo 1 4 "Using RPMs (ls): $(ls ${tmpdir}results)" # ADDED
-		akmods_echo 1 4 "Using RPMs (find): $(find ${tmpdir}results -type f -name '*.rpm' | grep -v debuginfo)" # ADDED
-
 		dnf -y ${pkg_install:-install} $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
 		#dnf -y ${pkg_install:-install} --nogpgcheck --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1
 	else
