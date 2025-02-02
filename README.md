@@ -1,4 +1,4 @@
-# 🦖 Bluefin for Macbook Pro 💻 13,1 (A1708)
+# 🦖 Bluefin for Macbook Pro 13,1 💻 (A1708)
 
 # 🎯 Purpose
 
