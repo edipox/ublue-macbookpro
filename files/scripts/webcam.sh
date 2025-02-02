@@ -8,7 +8,7 @@ KERNEL="$(rpm -q "${KERNEL_NAME:-kernel}" --queryformat '%{VERSION}-%{RELEASE}.%
 RELEASE="$(rpm -E '%fedora')"
 
 curl -L -o /etc/yum.repos.d/_copr_mulderje-intel-mac-rpms.repo \
-    "https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-$(RELEASE)/mulderje-intel-mac-rpms-fedora-$(RELEASE).repo"
+    "https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-${RELEASE}/mulderje-intel-mac-rpms-fedora-${RELEASE}.repo"
 
 
 chmod a=rwx,u+t /tmp # fix /tmp permissions
