@@ -85,3 +85,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bluefin:lat
 - copy `cosign.pub` to the root of the github repo
 - within settings, 'Actions secrets and variables', set up a secret variable named SIGNING_SECRET with the contents of `cosign.key`
 4. Install [Pull app](https://github.com/apps/pull) for automatic updates
+5. The build process is automatic through Github actions:
+6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/.github/workflows/build.yml))
+7. This loads the recipe (see recipes/[macbookpro-13-1-bluefin.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/recipes/macbookpro-13-1-bluefin.yml))
+8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/bluefin-macbookpro/tree/main/files/scripts) folder)
