@@ -23,6 +23,9 @@ curl -L -o /etc/yum.repos.d/_copr_mulderje-intel-mac-rpms.repo \
 
 dnf5 install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 chmod a=rwx,u+t /tmp # fix /tmp permissions
+mkdir -p /run/akmods
+#chmod a=rwx,u+t /run/akmods # fix /run/akmods ? permissions lets see...
+
 akmods --force --kernels "${KERNEL}" #--kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
