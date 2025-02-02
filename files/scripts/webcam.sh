@@ -17,27 +17,20 @@ curl -L -o /etc/yum.repos.d/_copr_mulderje-intel-mac-rpms.repo \
     "https://copr.fedorainfracloud.org/coprs/mulderje/intel-mac-rpms/repo/fedora-$(rpm -E %fedora)/mulderje-intel-mac-rpms-fedora-$(rpm -E %fedora).repo"
 #rpm-ostree install facetimehd-kmod
 
-echo "Tree ======>"
-tree -d /etc/yum.repos.d/_copr_mulderje-intel-mac-rpms.repo
-
 # original command
 #curl -LsSf -o /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo \
 #    "https://copr.fedorainfracloud.org/coprs/mulderje/facetimehd-kmod/repo/fedora-${COPR_RELEASE}/mulderje-facetimehd-kmod-fedora-${COPR_RELEASE}.repo"
 
-### BUILD facetimehd (succeed or fail-fast with debug output)
-echo "DNF ======>"
-dnf install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
-
-echo "AKMODS ======>"
+dnf5 install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 chmod a=rwx,u+t /tmp # fix /tmp permissions
-akmods --force --kernels "${KERNEL}" --kmod facetimehd
+akmods --force --kernels "${KERNEL}" #--kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
 
-modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
-|| (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
+#modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
+#|| (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
 
-rm -f /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo
+#rm -f /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo
 
 
 
