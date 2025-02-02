@@ -45,9 +45,11 @@ Personal image for testing a custom build for [Bluefin](https://projectbluefin.i
 ## 🔋 Power / Sleep / Hibernate
 
 - Not Working ❌
-- Realistically, this needs to be disabled...
-- Will probably do something like [this](https://discussion.fedoraproject.org/t/f39-how-do-i-disable-suspend/128934/2).
-- Try to use [nosuspend.conf](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/system/etc/systemd/nosuspend.conf) which is added to the /etc folder
+- Realistically, this needs to be disabled... not sure how this is done from Github actions
+- Disable all sleep / suspend / hibernate / hybrid-sleep targets [with systemd](https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/) once the install has done:
+```
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
 
 # Trying it out
 
