@@ -52,7 +52,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 ## 💻 Install Bluefin (or any other rpm-ostree image):
 
 - Install Bluefin from their official iso [from here](https://projectbluefin.io/)...
-- (reason: have not yet worked out how to generate an .iso yet!)
+- (reason: have not worked out how to generate an .iso!)
 - enable wifi (see above for ujust terminal command)
 
 ## 🔐 Verify the cosign key (optional, but recommended):
