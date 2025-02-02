@@ -18,12 +18,12 @@ dnf5 install -y akmod-facetimehd-*.fc${RELEASE}.${ARCH}
 
 # insert debug commands to just above where it fails
 # https://src.fedoraproject.org/rpms/akmods/blob/rawhide/f/akmods#_355
-sed -i 's|# dnf/yum install - repository disabled on purpose see rfbz#3350|echo "***** LINE355 ***** " && find "${tmpdir}results" -type f -name \'*.rpm\'|' /usr/sbin/akmods
+sed -i 's/akmods_echo 1 4 "DNF detected"/akmods_echo 1 4 "DNF detected" && echo $(find "${tmpdir}results" -type f -name "*.rpm"/' /usr/sbin/akmods
 
 # fix the --gpgcheck error for akmods
 # see: https://universal-blue.discourse.group/t/need-help-building-system76-io-akmods/5725/3
 # this then throws an error "unexpected argument '--disablerepo' found"
-sed -i "s/dnf -y ${pkg_install:-install} --nogpgcheck --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1/dnf -y ${pkg_install:-install} --no-gpgchecks --disablerepo='*' $(find "${tmpdir}results" -type f -name '*.rpm' | grep -v debuginfo) >> "${kmodlogfile}" 2>&1/g"  /usr/sbin/akmods
+sed -i "s/dnf -y ${pkg_install:-install} --nogpgcheck --disablerepo='*'/dnf -y ${pkg_install:-install} --no-gpgchecks --disablerepo='*'/g"  /usr/sbin/akmods
 akmods --force --kernels "${KERNEL}" --kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
