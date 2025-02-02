@@ -23,8 +23,8 @@ akmods --force --kernels "${KERNEL}" --kmod facetimehd
 
 #akmodsbuild --kernels "${KERNEL}" /usr/src/akmods/facetimehd-kmod-*.src.rpm
 
-#modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
-#|| (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
+modinfo "/usr/lib/modules/${KERNEL}/extra/facetimehd/facetimehd.ko.xz" > /dev/null \
+|| (find /var/cache/akmods/facetimehd/ -name \*.log -print -exec cat {} \; && exit 1)
 
 #rm -f /etc/yum.repos.d/_copr_mulderje-facetimehd-kmod.repo
 
