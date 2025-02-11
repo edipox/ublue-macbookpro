@@ -1,4 +1,4 @@
-name: macbookpro-13-1-aurora
+name: macbookpro-aurora
 description: Custom image for MacBook Pro 13,1 using Aurora
 base-image: ghcr.io/ublue-os/aurora
 image-version: stable-daily # latest is also supported if you want new updates ASAP
