@@ -14,7 +14,7 @@ This is a personal image for testing a custom build for [Bluefin](https://projec
 - Generally when an external script is called, they make use of `uname -r` to determine the current release of Linux
 - This fails in the build process (Github actions), as this is reported as `azure` (Microsoft's [Azure Linux](https://en.wikipedia.org/wiki/Azure_Linux) Container OS host)
 - To overcome this, the installed kernel release can be found with `rpm -qa kernel | cut -d '-' -f2-`
-- With this script, an external Makefile is modified using `sed` to explicitly pass the kernel release to `depmod -a`
+- With this script, the downloaded external Makefile is modified in-place using `sed` to explicitly pass the kernel release to `depmod -a`
   
 ## 📸 Facetime Webcam
 
