@@ -1,4 +1,4 @@
-name: macbookpro-bluefin
+name: ublue-macbookpro
 on:
   schedule:
     - cron:
@@ -26,6 +26,7 @@ jobs:
       matrix:
         recipe:
           - macbookpro-13-1-bluefin.yml
+          - macbookpro-13-1-aurora.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Image Build
