@@ -10,7 +10,7 @@ This is a personal image for testing a custom build for [Bluefin](https://projec
 
 - Working ✅
 - This needs a kernel module patch compiled from [source](https://github.com/davidjo/snd_hda_macbookpro).
-- See the install script here: [audio.sh](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/audio.sh)
+- See the install script here: [audio.sh](https://github.com/transilluminate/ublue-macbookpro/blob/main/files/scripts/audio.sh)
 - Generally when an external script is called, they make use of `uname -r` to determine the current release of Linux
 - This fails in the build process (Github actions), as this is reported as `azure`
 - To overcome this, the installed kernel release can be found with `rpm -qa kernel | cut -d '-' -f2-`
@@ -20,7 +20,7 @@ This is a personal image for testing a custom build for [Bluefin](https://projec
 
 - Working ✅
 - Building this was a nightmare! Akmods aren't the easiest!
-- See the install script here: [webcam.sh](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/webcam.sh)
+- See the install script here: [webcam.sh](https://github.com/transilluminate/ublue-macbookpro/blob/main/files/scripts/webcam.sh)
 - This needed a few fixes for the build to work (directory permissions, directories not existing, and build flags...)
 - The worst was patching `/usr/sbin/akmods` to remove the `--nogpgcheck --disablerepo` flags as these failed the build!
 
@@ -40,7 +40,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 ```
 - There _may_ be a way to improve things...
 - See the [info here](https://github.com/Dunedan/mbp-2016-linux?tab=readme-ov-file#suspend--hibernation) about disabling the NVMe controller's power state (`d3cold_allowed`)
-- There's a potential way to do this [suggested here](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/files/scripts/disable_sleep.sh) but I can live without sleep!
+- There's a potential way to do this [suggested here](https://github.com/transilluminate/ublue-macbookpro/blob/main/files/scripts/disable_sleep.sh) but I can live without sleep!
 
 # Trying it out
 
@@ -57,19 +57,19 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ## 🔐 Verify the cosign key (optional, but recommended):
 ```
-cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluefin-macbookpro/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-13-1-bluefin"
+cosign verify --key "https://raw.githubusercontent.com/transilluminate/ublue-macbookpro/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-bluefin"
 ```
 ## ♻️ Rebase to this version:
 
 - from within an existing rpm-ostree installation (i.e. Bluefin)
 - load a terminal, rebase to this image, then reboot:
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-13-1-bluefin
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-bluefin
 systemctl reboot
 ```
 - alternatively the Aurora image can be used:
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-13-1-aurora
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-aurora
 systemctl reboot
 ```
 - any issues, this can then be rolled back:
@@ -91,7 +91,7 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bluefin:lat
 - within settings, 'Actions secrets and variables', set up a secret variable named SIGNING_SECRET with the contents of `cosign.key`
 4. Install [Pull app](https://github.com/apps/pull) for automatic updates
 5. The build process is automatic with Github actions:
-6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/.github/workflows/build.yml))
-7. This loads the recipe (see recipes/[macbookpro-13-1-bluefin.yml](https://github.com/transilluminate/bluefin-macbookpro/blob/main/recipes/macbookpro-13-1-bluefin.yml))
-8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/bluefin-macbookpro/tree/main/files/scripts) folder)
+6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/.github/workflows/build.yml))
+7. This loads the recipe (see recipes/[macbookpro-13-1-bluefin.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/recipes/macbookpro-bluefin.yml))
+8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/ublue-macbookpro/tree/main/files/scripts) folder)
 9. On successful build this is pushed to the container registry (ghcr.io) where it can be pulled... 
