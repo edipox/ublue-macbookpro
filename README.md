@@ -1,3 +1,5 @@
+[![ublue-macbookpro](https://github.com/transilluminate/ublue-macbookpro/actions/workflows/build.yml/badge.svg)](https://github.com/transilluminate/ublue-macbookpro/actions/workflows/build.yml)
+
 # Universal Blue Custom Images for Macbook Pro 13,1 💻 (A1708)
 
 # 🎯 Purpose
