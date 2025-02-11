@@ -1,4 +1,4 @@
-# 🦖 Universal Blue Custom Images for Macbook Pro 13,1 💻 (A1708)
+# Universal Blue Custom Images for Macbook Pro 13,1 💻 (A1708)
 
 # 🎯 Purpose
 
