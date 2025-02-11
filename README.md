@@ -34,10 +34,8 @@ This is a personal image for testing a custom build for [Bluefin](https://projec
 ## 🔋 Power / Sleep / Hibernate
 
 - Not Working ❌
-- No easy fix for this, so the targets are currently disabled using systemctl:
-```
-sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
+- No easy fix for this, so the targets are currently disabled using systemctl
+- see the script here: [disable_sleep.sh](https://github.com/transilluminate/ublue-macbookpro/blob/main/files/scripts/disable_sleep.sh)
 - There _may_ be a way to improve things...
 - See the [info here](https://github.com/Dunedan/mbp-2016-linux?tab=readme-ov-file#suspend--hibernation) about disabling the NVMe controller's power state (`d3cold_allowed`)
 - There's a potential way to do this [suggested here](https://github.com/transilluminate/ublue-macbookpro/blob/main/files/scripts/disable_sleep.sh) but I can live without sleep!
