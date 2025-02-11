@@ -1,0 +1,4 @@
+type: rpm-ostree
+install:
+  - mbpfan
+  - akmods # used by the webcam install script
