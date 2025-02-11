@@ -2,7 +2,7 @@
 
 # 🎯 Purpose
 
-This is a personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) and [Aurora](https://getaurora.dev/) with modifications to support custom hardware: an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708). Other immutable flavours will likely work just fine, just need to alter the [recipe](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/recipes/macbookpro-13-1-bluefin.yml) to specify another base-image.
+This is a personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) and [Aurora](https://getaurora.dev/) with modifications to support custom hardware: an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708). Other immutable flavours will likely work just fine, just need to alter the [recipe](https://github.com/transilluminate/ublue-macbookpro/tree/main/recipes) to specify another base-image.
 
 # 📋 Current Status
 
@@ -58,6 +58,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 ## 🔐 Verify the cosign key (optional, but recommended):
 ```
 cosign verify --key "https://raw.githubusercontent.com/transilluminate/ublue-macbookpro/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-bluefin"
+cosign verify --key "https://raw.githubusercontent.com/transilluminate/ublue-macbookpro/refs/heads/main/cosign.pub" "ghcr.io/transilluminate/macbookpro-aurora"
 ```
 ## ♻️ Rebase to this version:
 
@@ -92,6 +93,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bluefin:lat
 4. Install [Pull app](https://github.com/apps/pull) for automatic updates
 5. The build process is automatic with Github actions:
 6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/.github/workflows/build.yml))
-7. This loads the recipe (see recipes/[macbookpro-bluefin.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/recipes/macbookpro-bluefin.yml))
+7. This loads both the recipes to build (see the [recipes](https://github.com/transilluminate/ublue-macbookpro/tree/main/recipes) folder)
 8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/ublue-macbookpro/tree/main/files/scripts) folder)
-9. On successful build this is pushed to the container registry (ghcr.io) where it can be pulled... 
+9. On successful build this is pushed to the container registry (ghcr.io) where it can be pulled...
