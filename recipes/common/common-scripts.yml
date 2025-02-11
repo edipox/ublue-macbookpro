@@ -1,0 +1,5 @@
+type: script
+scripts:
+  - audio.sh
+  - webcam.sh
+  - disable_sleep.sh
