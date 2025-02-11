@@ -1,5 +1,5 @@
-name: macbookpro-13-1-bluefin
-description: Second attempt at custom image for MacBook Pro 13,1
+name: macbookpro-13-1-aurora
+description: Custom image for MacBook Pro 13,1 using Aurora
 base-image: ghcr.io/ublue-os/aurora
 image-version: stable-daily # latest is also supported if you want new updates ASAP
 modules:
