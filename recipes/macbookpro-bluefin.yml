@@ -3,17 +3,5 @@ description: Custom image for MacBook Pro 13,1 using Bluefin
 base-image: ghcr.io/ublue-os/bluefin
 image-version: stable-daily # latest is also supported if you want new updates ASAP
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-  - type: rpm-ostree
-    install:
-      - mbpfan
-      - akmods # used by the webcam install script
-  - type: script
-    scripts:
-      - audio.sh
-      - webcam.sh
-      - disable_sleep.sh
+  - from-file: common/common-setup.yml
   - type: signing
