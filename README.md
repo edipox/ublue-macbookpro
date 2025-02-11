@@ -1,8 +1,8 @@
-# 🦖 Bluefin for Macbook Pro 13,1 💻 (A1708)
+# 🦖 Universal Blue Custom Images for Macbook Pro 13,1 💻 (A1708)
 
 # 🎯 Purpose
 
-This is a personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) with modifications to support custom hardware: an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708). Other immutable flavours will likely work just fine, just need to alter the [recipe](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/recipes/macbookpro-13-1-bluefin.yml) to specify another base-image.
+This is a personal image for testing a custom build for [Bluefin](https://projectbluefin.io/) and [Aurora](https://getaurora.dev/) with modifications to support custom hardware: an old [Intel Macbook Pro](https://support.apple.com/en-us/111951) 13,1 (A1708). Other immutable flavours will likely work just fine, just need to alter the [recipe](https://github.com/transilluminate/bluebuild-macbookpro-a1708/blob/main/recipes/macbookpro-13-1-bluefin.yml) to specify another base-image.
 
 # 📋 Current Status
 
@@ -65,6 +65,11 @@ cosign verify --key "https://raw.githubusercontent.com/transilluminate/bluefin-m
 - load a terminal, rebase to this image, then reboot:
 ```
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-13-1-bluefin
+systemctl reboot
+```
+- alternatively the Aurora image can be used:
+```
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/transilluminate/macbookpro-13-1-aurora
 systemctl reboot
 ```
 - any issues, this can then be rolled back:
