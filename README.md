@@ -92,6 +92,6 @@ sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bluefin:lat
 4. Install [Pull app](https://github.com/apps/pull) for automatic updates
 5. The build process is automatic with Github actions:
 6. The Github workflow is triggered (see .github/workflows/[build.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/.github/workflows/build.yml))
-7. This loads the recipe (see recipes/[macbookpro-13-1-bluefin.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/recipes/macbookpro-bluefin.yml))
+7. This loads the recipe (see recipes/[macbookpro-bluefin.yml](https://github.com/transilluminate/ublue-macbookpro/blob/main/recipes/macbookpro-bluefin.yml))
 8. This in turn calls various custom scripts (see the [scripts](https://github.com/transilluminate/ublue-macbookpro/tree/main/files/scripts) folder)
 9. On successful build this is pushed to the container registry (ghcr.io) where it can be pulled... 
