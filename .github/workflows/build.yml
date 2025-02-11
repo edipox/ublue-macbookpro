@@ -1,4 +1,4 @@
-name: ublue-macbookpro
+name: Build Images
 on:
   schedule:
     - cron:
