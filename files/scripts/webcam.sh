@@ -23,7 +23,7 @@ echo "Patching /usr/sbin/akmods (should not see --nogpgcheck or --disablerepo fl
 # fix the --gpgcheck and --disablerepo errors for /usr/sbin/akmods
 # see: https://universal-blue.discourse.group/t/need-help-building-system76-io-akmods/5725/3
 # Note: escape the $ and * if in double quotes, and use double quotes to avoid escaping the single quotes!
-sed -i "s/dnf -y \${pkg_install:-install} --nogpgcheck --disablerepo='\*'/dnf -y \${pkg_install:-install}/" /usr/sbin/akmods
+sed -i "s/dnf -y \${pkg_install:-install} --nogpgcheck --disablerepo='\*'/dnf5 -y \${pkg_install:-install}/" /usr/sbin/akmods
 # check this is working
 cat /usr/sbin/akmods | grep "dnf -y"
 
