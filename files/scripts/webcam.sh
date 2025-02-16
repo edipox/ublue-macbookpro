@@ -25,7 +25,7 @@ echo "Patching /usr/sbin/akmods (should not see --nogpgcheck or --disablerepo fl
 # Note: escape the $ and * if in double quotes, and use double quotes to avoid escaping the single quotes!
 sed -i "s/dnf -y \${pkg_install:-install} --nogpgcheck --disablerepo='\*'/dnf5 -y \${pkg_install:-install}/" /usr/sbin/akmods
 # check this is working
-cat /usr/sbin/akmods | grep "dnf -y"
+cat /usr/sbin/akmods | grep "dnf5 -y"
 
 echo "Running akmods for facetimehd ..."
 akmods --force --kernels "${KERNEL}" --kmod facetimehd
