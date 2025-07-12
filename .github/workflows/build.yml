@@ -27,6 +27,7 @@ jobs:
         recipe:
           - macbookpro-bluefin.yml
           - macbookpro-aurora.yml
+          - macbookpro-bazzite.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Image Build
